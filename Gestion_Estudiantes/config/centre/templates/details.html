@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+{% if alumne %}
+    <div class="info">
+        <h1>Detalles del alumno : {{ alumne.name }} {{ alumne.surname2 }} </h1>
+        <p><strong>ID:</strong> {{ alumne.id }}</p>
+        <p><strong>Nombre:</strong> {{ alumne.name }}</p>
+        <p><strong>Primer Apellido:</strong> {{ alumne.surname }}</p>
+        <p><strong>Segundo Apellido:</strong> {{ alumne.surname2 }}</p>
+        <p><strong>Email:</strong> {{ alumne.email }}</p>
+        <p><strong>Curso:</strong> {{ alumne.curs }}</p>
+        <p><strong>Módulos Matriculados:</strong> {{ alumne.modulsMatriculats }}</p>
+    </div>
+{% else %}
+    <p>No existe un alumno con el ID proporcionado.</p>
+{% endif %}
+    <a href="{% url 'alumnos' %}">Volver a la lista</a>
+    
+    
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.info {
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+</style>
+
+{% endblock %}

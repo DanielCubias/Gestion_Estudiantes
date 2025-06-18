@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h1>Informacio professorat TIC</h1>
+{% for profe in professors %}
+<div style="background-color: #d2db86; padding: 10px; margin-bottom: 10px; color: #292626;">
+    <p><strong>Nom:</strong> {{ profe.name }}</p>
+    <p><strong>Cognom:</strong> {{ profe.surname }}</p>
+    <p><strong>Cognom2:</strong> {{ profe.surname2 }}</p>
+    <p><strong>Correu electrònic:</strong> {{ profe.email }}</p>
+    <p><strong>tutor:</strong> {{ profe.tutor }}</p>
+
+ <a href="{% url 'detailsProfesors' pk=profe.id %}">
+     <button>Ver detalles</button>
+ </a>
+
+</div>
+
+{% endfor %}
+    
+     <a href="{% url 'professor_form' %}"> Afegir Professors</a>
+{% endblock %}
