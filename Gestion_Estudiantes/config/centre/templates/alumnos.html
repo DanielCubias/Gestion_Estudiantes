@@ -1,42 +1,49 @@
 {% extends 'index.html' %}
+{% load static %}
 
-
-{% block content %}
-
-<h2>Llistat d'Alumnes</h2>
-
-<table>
-    <tr>
-        <th>Nom</th>
-        <th>Cognom</th>
-        <th>Email</th>
-        <th>Curs</th>
-        <th>Acciones</th>
-    </tr>
-    {% for usr in usrs %}
-    <tr>
-        <td>{{ usr.name }}</td>
-        <td>{{ usr.surname }}</td>
-        <td>{{ usr.email }}</td>
-        <td>{{ usr.Curs }}</td>
-        <td>
-            <a href="{% url 'details' pk=usr.id %}">
-                <button>Ver detalles</button>
-            </a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
-
-<ul>
-    {%for book in books%}
-    <li> Title: <a href="{% url 'book' book.id %}"> {{books.title}}</a></li>
-    <li>Author: {{ books.author}}</li>
-    <li>info: {{books.info}}</li>
-</ul>
-{% endfor %}
-     <a href="{% url 'user_form' %}"> Afegir alumnes</a>
+{% block images %}
+<div class="container text-center my-4">
+    <img src="{% static 'img/alumno.png' %}" alt="Alumno" class="img-fluid rounded shadow" style="max-width: 250px;">
+</div>
 {% endblock %}
 
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">📋 Llistat d'Alumnes</h2>
 
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Cognom</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Curs</th>
+                    <th scope="col">Accions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usr in usrs %}
+                <tr>
+                    <td>{{ usr.name }}</td>
+                    <td>{{ usr.surname }}</td>
+                    <td>{{ usr.email }}</td>
+                    <td>{{ usr.Curs }}</td>
+                    <td>
+                        <a href="{% url 'details' pk=usr.id %}" class="btn btn-sm btn-primary">
+                            Veure detalls
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
+    <div class="text-center mt-4">
+        <a href="{% url 'user_form' %}" class="btn btn-success btn-lg">
+            ➕ Afegir alumne
+        </a>
+    </div>
+</div>
+{% endblock %}
