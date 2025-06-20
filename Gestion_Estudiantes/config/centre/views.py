@@ -52,7 +52,7 @@ def details(request, pk):
         alumne_obj = Alumne.objects.get(pk=pk)  # Busca el alumno por ID
     except Alumne.DoesNotExist:
         alumne_obj = None
-    return render(request, 'details.html', {'alumne': alumne_obj})
+    return render(request, 'detailsAlumnes.html', {'alumne': alumne_obj})
 
 #
 # Professors
